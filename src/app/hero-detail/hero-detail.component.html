@@ -1,0 +1,13 @@
+<ng-container *ngIf="hero">
+  <h3>{{ hero?.name | uppercase }}</h3>
+  <div><span>id: </span>{{ hero?.id }}</div>
+  <div><span>name: </span>{{ hero?.name }}</div>
+
+  <!-- SECTION FOR HERO EDITING -->
+  <div>
+    <label
+      >Name:
+      <input type="text" [(ngModel)]="hero.name" />
+    </label>
+  </div>
+</ng-container>
