@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HerosComponent } from './heros/heros.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessageComponent } from './message/message.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HerosComponent,
     HeroDetailComponent,
-    MessageComponent
+    MessageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
