@@ -3,6 +3,7 @@ import { Hero } from '../hero';
 // import { heroes } from '../resources/hero-data';
 import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
+import { Observer, of } from 'rxjs';
 
 @Component({
   selector: 'app-heros',
@@ -26,9 +27,18 @@ export class HerosComponent implements OnInit {
     this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
   }
 
-  onSelect(hero: Hero) {
-    console.log(hero);
-    this.messageService.addMessage(`HeroesComponent: Selected hero with id - ${hero.id}`)
-    this.selectedHero = hero;
+  addHero(name: String): void {
+    name = name.trim();
+    if (!name) return;
+    this.heroService
+      .addHero({ name } as Hero)
+      .subscribe((hero) => this.heroes.push(hero));
   }
+
+  deleteHero(id: number) {
+    this.heroes = this.heroes.filter(hero => hero.id !== id);
+    this.heroService.deleteHero(id).subscribe();
+  }
+
+  // searchHero(keyword: string): Observer<Hero[]> {}
 }
